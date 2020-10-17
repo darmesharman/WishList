@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<WishList.Models.User>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <div class="row text-center">
+        <h1> Enter as: </h1>
+    </div>
+    <div class="row text-center">
+        @foreach (var item in Model)
+        {
+        <div class="col">
+            @*<a href="/Home/Arman" class="btn btn-outline-primary">
+            @item.Name
+        </a>*@
+            <form method="post" action="Home/@item.Name">
+                
+                <input type="submit" value=@item.Name name=@item.Name />
+            </form>
+        </div>
+        }
+    </div>
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+
+
