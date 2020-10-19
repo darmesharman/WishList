@@ -27,18 +27,22 @@ namespace WishList.Controllers
             return View(_db.Users.ToList());
         }
 
-        public IActionResult Adder()
+        public IActionResult AdderArman()
+        {
+            return View();
+        }
+        public IActionResult AdderBake()
+        {
+            return View();
+        }
+        public IActionResult AdderDake()
         {
             return View();
         }
 
         public IActionResult Arman()
         {
-            ViewBag.Message = "Welcome to my demo!";
-            dynamic mymodel = new ExpandoObject();
-            mymodel.User = _db.Users.ToList();
-            mymodel.Item = _db.Items.ToList();
-            return View(mymodel);
+            return View(_db.Items.ToList());
         }
 
         public IActionResult Bake()
@@ -49,17 +53,59 @@ namespace WishList.Controllers
             mymodel.Item = _db.Items.ToList();
             return View(mymodel);
         }
+        public IActionResult Dake()
+        {
+            ViewBag.Message = "Welcome to my demo!";
+            dynamic mymodel = new ExpandoObject();
+            mymodel.User = _db.Users.ToList();
+            mymodel.Item = _db.Items.ToList();
+            return View(mymodel);
+        }
 
         [HttpPost]
-        public IActionResult Adder(Item item)
+        public IActionResult AdderArman(Item item)
 
         {
-            _db.Items.Add(item);
+            var newItem = new Item
+            {
+                UserId = 0,
+                ItemName = item.ItemName
+            };
+            _db.Items.Add(newItem);
             _db.SaveChanges();
 
             return RedirectToAction("Arman");
         }
 
+        [HttpPost]
+        public IActionResult AdderBake(Item item)
+
+        {
+            var newItem = new Item
+            {
+                UserId = 1,
+                ItemName = item.ItemName
+            };
+            _db.Items.Add(newItem);
+            _db.SaveChanges();
+
+            return RedirectToAction("Bake");
+        }
+
+        [HttpPost]
+        public IActionResult AdderDake(Item item)
+
+        {
+            var newItem = new Item
+            {
+                UserId = 2,
+                ItemName = item.ItemName
+            };
+            _db.Items.Add(newItem);
+            _db.SaveChanges();
+
+            return RedirectToAction("Dake");
+        }
 
         public IActionResult Privacy()
         {

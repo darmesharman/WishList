@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Arman";
 }
-@model dynamic
+@model IEnumerable<WishList.Models.Item>
 
 <div class="container">
     <div class="row">
@@ -13,25 +13,25 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                    
                         <th scope="col">Item</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Item)
+                    @foreach (var item in Model)
                     {
-                        @if(@item.UserId == 0)
+                        @if (@item.UserId == 0)
                         {
                             <tr>
-                                <td>@item.Id</td>
-                                <th>@item.ItemName</th>
+                                
+                                <td>@item.ItemName</td>
                             </tr>
                         }
 
                     }
                 </tbody>
             </table>
-            <a href="/Home/Adder" class="btn btn-primary float-right">Add Item</a>
+            <a href="/Home/AdderArman" class="btn btn-primary float-right">Add Item</a>
         </div>
     </div>
 
@@ -42,19 +42,18 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                      
                         <th scope="col">Item</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Item)
+                    @foreach (var item in Model)
                     {
                         @if (@item.UserId == 1)
                         {
                             <tr>
-                                <td>@item.Id</td>
-                                <th>@item.ItemName</th>
+                               
+                                <td>@item.ItemName</td>
                             </tr>
                         }
 
@@ -67,19 +66,19 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        
                         <th scope="col">Item</th>
-                        <th></th>
+    
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Item)
+                    @foreach (var item in Model)
                     {
                         @if (@item.UserId == 2)
                         {
                             <tr>
-                                <td>@item.Id</td>
-                                <th>@item.ItemName</th>
+
+                                <td>@item.ItemName</td>
                             </tr>
                         }
 
